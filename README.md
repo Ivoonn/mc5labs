@@ -2,8 +2,8 @@
 prácticas de métodos cuantitativos en ecología
 
 ## Regresión Lineal
-Explicación de la [regresión lineal](https://rpubs.com/joser/RegresionSimple). 
-
+ klsjdvldvbd
+ 
 ## Análisis de varianza
 Explicación de la [regresión lineal](https://rpubs.com/joser/RegresionSimple). 
 
