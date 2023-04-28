@@ -1,0 +1,89 @@
+---
+title: "Prueba de hipótesis y análisis de varianza"
+author: "Ivonne Carpio"
+date: "2023-04-27"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Prueba de hipótesis
+Para una pregunta de investigación se plantea una propoisición que se debe verificar la prueba de la hipótesis es la verificación con un nivel de confianza de si se cumple o no la proporsición inicial
+
+## data orange
+
+La data '''orange''' tiene 35 registros del crecimiento de árboles de naranja. las variables son: el número de árbil, la edad, y la circunferencia.
+
+```{r data}
+data(Orange)
+str(Orange)
+```
+
+El número de árboles es de tipo factor y se tiene 5 árbiles. La edad y el diametro son de tipo númerico.
+
+```{r explora}
+summary(Orange)
+```
+
+##Visualización preliminar
+
+```{r plot1}
+library(ggplot2)
+ggplot(dat = Orange, aes(x = age, y = circumference,
+                         col=Tree)) + 
+  geom_point()
+```
+
+La figura de muestra que medida que pasa el tiempo (edad) el diametro de los árboles incrementa. 1 diametro de árboles 2 y 4 es mayor que la de los árboles 1 y 3.
+
+## Planteamento de la hipotesis
+
+La hipotesis nula (N0) es aquella donde se espera que no exista efecto. Es la más fácil de contradecir.
+
+$H0_(1)$: La edad del árbol no incide en el tamaño del diámetro.
+$H0_(2)$: Los árboles tienen el mismo diámetro a medida qu epasa el tiempo.
+
+```{r verificarH01}
+H01<- lm(circumference ~ age, data = Orange)
+summary(H01)
+```
+
+Con un nivel de confianza del 90% se estima que el intercepto (el valor del diametro sin efecto de la edad) es de 17.39 milímetros.
+
+Con un nivel de confianza del 99.9% se estima que la pendiente (el cambio en mm del diametro por cada día que pasa) es de 0.106
+$/frac(mm)(día)$
+
+Con un nivel de confianza del 90% la relación entre el diámetro de los árboles de narnaja y la edad es:
+
+$$
+
+D = 17.39 + 0.106 / cdot*E
+
+$$
+
+Donde D es el diámetro de milímetros y E es la edad en diametros
+
+## Visualización de la regresión 
+
+```{r Reg1}
+ggplot(data = Orange, aes(x = age, y = circumference)) +
+  geom_point() + geom_smooth(method = "lm") + theme_classic() +
+  labs(x= "Edad [días]", y = "Dámetro [mm]")
+
+```
+
+## Verificación la hipotesis 2
+
+```{r reg2}
+ggplot(data = Orange, aes(x = age, y = circumference, col = Tree)) +
+  geom_point() + geom_smooth(method = "lm") + theme_classic() + 
+  labs(x = "Edad [días]", y = " Diámetro [mm]")
+
+```
+
+
