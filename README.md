@@ -4,6 +4,12 @@ prácticas de métodos cuantitativos en ecología
 ## Regresión Lineal
  Análisis de datos que predicen  el valor de este dato mendiante e uso de datos relacionados y conocidos.
  
+ Supuesto para que exista la regresión lineal 
+ **Error distribuido normalmente**
+ **Varianza en constante**
+ **medida son independientes**
+ **-----**
+ 
 ## Análisis de varianza
 COmpara las varianzas entre las medidas de diferentes grupos.
 
